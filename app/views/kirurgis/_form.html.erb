@@ -1,0 +1,29 @@
+<%= form_for(@kirurgi) do |f| %>
+  <% if @kirurgi.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@kirurgi.errors.count, "error") %> prohibited this kirurgi from being saved:</h2>
+
+      <ul>
+      <% @kirurgi.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label "Navn paa hoved type kirurgi:" %><br />
+    <%= f.text_field :name %>
+  </div>
+
+  <%= f.fields_for :types do |builder| %>
+  
+  	<%= render 'type_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Legg til type", f, :types %>
+  
+  
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

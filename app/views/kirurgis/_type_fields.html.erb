@@ -1,0 +1,10 @@
+<fieldset>
+  <%= f.label :content, "Hvilken type kirurgi:" %><br />
+  <%= f.text_field :content %><br />
+  <%= f.check_box :_destroy %>
+  <%= f.label :_destroy, "Slett denne" %>
+  <%= f.fields_for :infos do |builder| %>
+    <%= render 'info_fields', f: builder %>
+  <% end %>
+  <%= link_to_add_fields "Legg til info for denne typen", f, :infos %>
+</fieldset>

@@ -1,0 +1,15 @@
+
+.buttonLinks a{
+	margin-top:10px;
+	margin-right:10px;
+	width:auto;
+	color:#fff;
+	float:left;
+	padding:5px;
+	background:#546787;
+	text-decoration:none;
+}
+.buttonLinks a:hover{
+	background:#000;
+	
+}

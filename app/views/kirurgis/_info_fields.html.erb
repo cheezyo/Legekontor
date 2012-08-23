@@ -1,0 +1,12 @@
+<script>
+	widgInit();
+</script>
+<fieldset>
+  <%= f.label :name, "Navn paa link" %><br />
+  <%= f.text_field :name %>
+  <%= f.hidden_field :_destroy %><br/>
+  <%= f.label :content, "Info for denne siden" %><br />
+  <%= f.text_area :content, :cols => 40, :rows => 15, :class => "widgEditor" %>
+  <%= f.hidden_field :_destroy %>
+  <%= link_to "Slett", '#', class: "remove_fields" %>
+</fieldset>

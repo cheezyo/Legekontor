@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Legekontor</title>
+		<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
+		<%= stylesheet_link_tag    "application", :media => "all" %>
+		<%= javascript_include_tag "application" %>
+		<%= csrf_meta_tags %>
+<script type="text/javascript">
+	var ddmenuitem = 0;
+
+function jsddm_open(event)
+{
+   jsddm_close();
+   var submenu = $(this).find('ul');
+    if(submenu){
+        ddmenuitem = submenu.css('visibility', 'visible');
+        return false;
+    }
+    return true;
+}
+
+function jsddm_close()
+{  if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
+
+
+$(document).ready(function()
+{  $('#jsddm li').bind('click', jsddm_open);
+});
+
+document.onclick = jsddm_close;
+	
+</script>
+
+	</head>
+	<body>
+		<div id="wrapper">
+			<header></header>
+			<nav>
+				<ul id="jsddm">
+					<li>
+						<a href="#">JavaScript</a>
+						<ul>
+							<li>
+								<a href="#">Drop Down Menu</a>
+							</li>
+							<li>
+								<a href="#">jQuery Plugin</a>
+							</li>
+							<li>
+								<a href="#">Ajax Navigation</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Effect</a>
+						<ul>
+							<li>
+								<a href="#">Slide Effect</a>
+							</li>
+							<li>
+								<a href="#">Fade Effect</a>
+							</li>
+							<li>
+								<a href="#">Opacity Mode</a>
+							</li>
+							<li>
+								<a href="#">Drop Shadow</a>
+							</li>
+							<li>
+								<a href="#">Semitransparent</a>
+							</li>
+						</ul>
+					</li>
+					<li>
+						<a href="#">Navigation</a>
+					</li>
+					<li>
+						<a href="#">HTML/CSS</a>
+					</li>
+					<li>
+						<a href="#">Help</a>
+					</li>
+				</ul>
+			</nav>
+			<section>
+				<%= yield %>
+			</section>
+			<footer></footer>
+		</div><!-- end wrapper -->
+	</body>
+</html>

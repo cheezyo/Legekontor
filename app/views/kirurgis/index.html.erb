@@ -1,0 +1,23 @@
+<h1>Listing kirurgis</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @kirurgis.each do |kirurgi| %>
+  <tr>
+    <td><%= kirurgi.name %></td>
+    <td><%= link_to 'Show', kirurgi %></td>
+    <td><%= link_to 'Edit', edit_kirurgi_path(kirurgi) %></td>
+    <td><%= link_to 'Destroy', kirurgi, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Kirurgi', new_kirurgi_path %>
