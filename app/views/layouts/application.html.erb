@@ -2,88 +2,54 @@
 <html>
 	<head>
 		<title>Legekontor</title>
-		<script type='text/javascript' src='http://code.jquery.com/jquery-1.7.1.js'></script>
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
-<script type="text/javascript">
-	var ddmenuitem = 0;
+<script>
+		function showstuff(boxid, i) {
+			var s = document.getElementById(boxid);
+			if(s.style.display == 'none' && i == 0) {
+				s.style.display = "block";
+				return false;
+			} else {
+				s.style.display = "none";
+				return false;
+			}
+			
 
-function jsddm_open(event)
-{
-   jsddm_close();
-   var submenu = $(this).find('ul');
-    if(submenu){
-        ddmenuitem = submenu.css('visibility', 'visible');
-        return false;
-    }
-    return true;
-}
-
-function jsddm_close()
-{  if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
-
-
-$(document).ready(function()
-{  $('#jsddm li').bind('click', jsddm_open);
-});
-
-document.onclick = jsddm_close;
+		}
+		
 	
-</script>
-
-	</head>
+	</script>
 	<body>
 		<div id="wrapper">
 			<header></header>
 			<nav>
-				<ul id="jsddm">
-					<li>
-						<a href="#">JavaScript</a>
-						<ul>
-							<li>
-								<a href="#">Drop Down Menu</a>
-							</li>
-							<li>
-								<a href="#">jQuery Plugin</a>
-							</li>
-							<li>
-								<a href="#">Ajax Navigation</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Effect</a>
-						<ul>
-							<li>
-								<a href="#">Slide Effect</a>
-							</li>
-							<li>
-								<a href="#">Fade Effect</a>
-							</li>
-							<li>
-								<a href="#">Opacity Mode</a>
-							</li>
-							<li>
-								<a href="#">Drop Shadow</a>
-							</li>
-							<li>
-								<a href="#">Semitransparent</a>
-							</li>
-						</ul>
-					</li>
-					<li>
-						<a href="#">Navigation</a>
-					</li>
-					<li>
-						<a href="#">HTML/CSS</a>
-					</li>
-					<li>
-						<a href="#">Help</a>
-					</li>
-				</ul>
+				<a href="javascript:void(0)" onclick="showstuff('show', 0);"> Home</a>
 			</nav>
-			<section>
+			<div  id="show" class="hidden">
+				<% if Kirurgi.find(:all).count > 0 %>
+				<table id="menu">
+					
+					
+					<tr>
+						<% Kirurgi.find(:all, :order => 'name ASC').each do |k| %>
+						<th><%= k.name %></th>
+					</tr>
+					
+					<tr>
+						<% k.types.each do |t|%>
+						<td><%= link_to t.content, t %></td>
+						<td>555 77 854</td>
+						<td>555 77 855</td>
+					</tr>
+					<%end%>
+					<% end %>
+				
+				</table>
+				<% end %>
+			</div>
+			<section onclick="showstuff('show', 1);">
 				<%= yield %>
 			</section>
 			<footer></footer>

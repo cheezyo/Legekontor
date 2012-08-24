@@ -41,22 +41,25 @@ nav {
 	width:70%;
 	background:
 }
-nav > a {
-	float:left;
-	padding:1em;
-	background:#fff;
-	color:#000;
-	text-decoration: none;
-	border-radius: 10px 10px 0px 0px;
+.hidden {
+  display:none;
 }
-
-nav > a:hover{
-	text-decoration: none;
+#show{
+	width:auto;
+	max-width:70%;
+	height:auto;
+	position:absolute;
+	padding:10px;
+	z-index:30;
+	margin-left:15%;
+	margin-top:19px;
+	background:#242424;
+	
 }
-
 
 section{
 	float:left;
+	color:#000;
 	width:70%;
 	margin-left:15%;
 	height:auto;
@@ -64,6 +67,9 @@ section{
 	padding-bottom:20px;
 	background:#fff;
 	
+}
+section > a{
+	color:#000;
 }
 
 #left{

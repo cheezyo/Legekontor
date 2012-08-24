@@ -1,6 +1,6 @@
 Legekontor::Application.routes.draw do
-  root to: 'pages#home'
-  resources :kirurgis
+   root to: 'pages#home'
+  resources :kirurgis, :types, :infos
   
 
   # The priority is based upon order of creation:
