@@ -5,54 +5,50 @@
 		<%= stylesheet_link_tag    "application", :media => "all" %>
 		<%= javascript_include_tag "application" %>
 		<%= csrf_meta_tags %>
-<script>
-		function showstuff(boxid, i) {
-			var s = document.getElementById(boxid);
-			if(s.style.display == 'none' && i == 0) {
-				s.style.display = "block";
-				return false;
-			} else {
-				s.style.display = "none";
-				return false;
-			}
-			
+		<script>
+			function showstuff(boxid, i) {
+				var s = document.getElementById(boxid);
+				if(s.style.display == 'none' && i == 0) {
+					s.style.display = "block";
+					return false;
+				} else {
+					s.style.display = "none";
+					return false;
+				} 
 
-		}
-		
-	
-	</script>
-	<body>
-		<div id="wrapper">
-			<header></header>
+			}
+		</script>
+		<body>
+			<header>
+				<div id="logo">
+				<!--<img class="logo" src="http://www.seeklogo.com/images/D/Doctor_Design-logo-CCE6ADC5A3-seeklogo.com.gif" alt="Logo"/>-->
+				<img class="headerpic" src="http://www.miltonhilton.com/blog/uploaded_images/ID_doctor_logo_96-742859.jpg" alt="pic"/>
+				</div>
+			</header>
 			<nav>
-				<a href="javascript:void(0)" onclick="showstuff('show', 0);"> Home</a>
-			</nav>
+				<%= link_to 'Home', root_path, :class => 'home' %> 
+				<a href="javascript:void(0)" onclick="showstuff('show', 0);"> Kirurgi</a>
+			
 			<div  id="show" class="hidden">
 				<% if Kirurgi.find(:all).count > 0 %>
-				<table id="menu">
-					
-					
-					<tr>
-						<% Kirurgi.find(:all, :order => 'name ASC').each do |k| %>
-						<th><%= k.name %></th>
-					</tr>
-					
-					<tr>
-						<% k.types.each do |t|%>
-						<td><%= link_to t.content, t %></td>
-						<td>555 77 854</td>
-						<td>555 77 855</td>
-					</tr>
+
+				<% Kirurgi.find(:all, :order => 'name ASC').each do |k| %>
+				<div id="leftNav">
+					<h1><%= k.name %></h1>
+					<% k.types.each do |t|%>
+					<p>
+						<%= link_to t.title, t %>
+					</p>
 					<%end%>
-					<% end %>
-				
-				</table>
+				</div>
+				<% end %>
 				<% end %>
 			</div>
-			<section onclick="showstuff('show', 1);">
-				<%= yield %>
-			</section>
+			</nav>
+			<%= yield %>
+				
+			
+				<h1 class="contactus">Kontakt oss</h1>
 			<footer></footer>
-		</div><!-- end wrapper -->
-	</body>
+		</body>
 </html>
